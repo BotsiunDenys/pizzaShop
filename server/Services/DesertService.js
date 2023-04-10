@@ -1,4 +1,4 @@
-import Desert from "../models/DesertModel";
+import Desert from "../models/DesertModel.js";
 
 class DesertService {
   async create(desert) {

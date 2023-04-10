@@ -1,5 +1,5 @@
 import Router from "express";
-import DesertController from "../Controllers/DesertController";
+import DesertController from "../Controllers/DesertController.js";
 
 const DesertRouter = new Router();
 
