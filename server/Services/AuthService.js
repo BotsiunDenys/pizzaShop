@@ -6,7 +6,7 @@ import { UserDto } from "../dtos/UserDto.js";
 import { ApiError } from "../exceptions/ApiError.js";
 
 class UserService {
-  async registration(username, password) {
+  async registration({username, password}) {
     const candidate = await User.findOne({ username });
     if (candidate) {
       throw ApiError.BadRequest(`User ${username} is already exists`);
