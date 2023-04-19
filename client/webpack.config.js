@@ -1,5 +1,5 @@
 const path = require("path");
-const htmlWebpackPlugin = require("html-webpack-plugin")
+const htmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = [
   {
@@ -36,12 +36,15 @@ module.exports = [
           },
         },
         {
-          test: /\.css$/,
+          test: /\.(css|module.css)$/,
           exclude: /node_modules/,
-          use: ["style-loader", "css-loader"],
+          use: ["style-loader", "css-loader", "postcss-loader"],
         },
         { test: /\.(png|svg|jpg|jpeg)$/i, type: "assets/resource" },
       ],
+    },
+    devServer: {
+      historyApiFallback: true,
     },
   },
 ];

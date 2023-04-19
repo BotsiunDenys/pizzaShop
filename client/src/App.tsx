@@ -1,33 +1,23 @@
-import React, { useEffect } from "react";
-import LoginForm from "./components/loginForm";
-import "./assets/styles/style.css";
-import { useAppDispatch, useAppSelector } from "./store/store";
-import { checkAuth, logout } from "./store/slice/AuthSlice";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navigation from "./components/Navigation";
+import Home from "./components/Home";
+import Menu from "./components/Menu";
+import About from "./components/About";
+import Login from "./components/Login";
 
 const App = () => {
-  const isLogged = useAppSelector((state) => state.isLogged);
-  const user = useAppSelector((state) => state.user);
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      dispatch(checkAuth());
-    }
-  }, []);
   return (
-    <div className="app">
-      <h1>{isLogged ? user?.username : "Log in"}</h1>
-      {isLogged ? (
-        <button
-          onClick={() => {
-            dispatch(logout());
-          }}
-        >
-          Logout
-        </button>
-      ) : (
-        <LoginForm />
-      )}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigation />}>
+          <Route index element={<Home />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 
