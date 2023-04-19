@@ -1,0 +1,19 @@
+.link {
+  @apply transition-colors md:block flex gap-1 items-center;
+}
+
+.link:hover {
+  @apply text-main;
+}
+
+.link:focus {
+  @apply text-main;
+}
+
+.li {
+  @apply md:py-0 py-3;
+}
+
+.icon {
+  @apply mr-3 text-3xl md:hidden;
+}
