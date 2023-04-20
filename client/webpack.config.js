@@ -40,7 +40,7 @@ module.exports = [
           exclude: /node_modules/,
           use: ["style-loader", "css-loader", "postcss-loader"],
         },
-        { test: /\.(png|svg|jpg|jpeg)$/i, type: "assets/resource" },
+        { test: /\.(png|svg|jpg|jpeg)$/i, type: "asset/resource" },
       ],
     },
     devServer: {

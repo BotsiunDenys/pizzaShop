@@ -1,0 +1,14 @@
+.card {
+  @apply hover:text-white rounded-md shadow-standart w-[300px] h-[240px] p-[24px] transition-colors hover:bg-main animate-slide-in;
+}
+.cardHeader {
+  @apply text-2xl font-bold mt-3 mb-6;
+}
+
+.cardImage {
+  @apply text-[50px] text-main transition-colors;
+}
+
+.card:hover .cardImage {
+  @apply text-white;
+}
