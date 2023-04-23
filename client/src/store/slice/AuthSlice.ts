@@ -26,7 +26,7 @@ interface AuthDetails {
 export const login = createAsyncThunk<AuthResponse, AuthDetails>(
   "auth/login",
   async ({ username, password }) => {
-    const response = await api.post("/login", { username, password });
+    const response = await api.post("/auth/login", { username, password });
     localStorage.setItem("token", response.data.accessToken);
     return response.data;
   }
@@ -35,7 +35,7 @@ export const login = createAsyncThunk<AuthResponse, AuthDetails>(
 export const registration = createAsyncThunk<AuthResponse, AuthDetails>(
   "auth/registration",
   async (username, password) => {
-    const response = await api.post("/registration", { username, password });
+    const response = await api.post("/auth/registration", { username, password });
     localStorage.setItem("token", response.data.accessToken);
     return response.data;
   }
@@ -44,7 +44,7 @@ export const registration = createAsyncThunk<AuthResponse, AuthDetails>(
 export const logout = createAsyncThunk<AuthResponse>(
   "auth/logout",
   async () => {
-    const response = await api.post("/logout");
+    const response = await api.post("/auth/logout");
     localStorage.removeItem("token");
     return response.data;
   }
@@ -53,7 +53,7 @@ export const logout = createAsyncThunk<AuthResponse>(
 export const checkAuth = createAsyncThunk<AuthResponse>(
   "auth/checkAuth",
   async () => {
-    const response = await axios.get(`${API_URL}/refresh`, {
+    const response = await axios.get(`${API_URL}/auth/refresh`, {
       withCredentials: true,
     });
     localStorage.setItem("token", response.data.accessToken);

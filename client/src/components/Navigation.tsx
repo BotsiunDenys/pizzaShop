@@ -10,6 +10,7 @@ import {
 import { MdOutlineFastfood } from "react-icons/md";
 import { BiLogIn } from "react-icons/bi";
 import "../styles/nav.css";
+import Footer from "./Footer";
 
 const Navigation = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -62,6 +63,7 @@ const Navigation = () => {
         </ul>
       </nav>
       <Outlet />
+      <Footer />
     </>
   );
 };

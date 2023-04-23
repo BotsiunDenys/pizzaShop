@@ -14,6 +14,10 @@ module.exports = {
       backgroundImage: {
         "hero-pattern": "url('images/hero.jpg')",
         "pizza-rotating": "url('images/pizza-rotate.png')",
+        "about-1": "url(images/about-1.jpg)",
+        "about-2": "url(images/about-2.jpg)",
+        "about-3": "url(images/about-3.jpg)",
+        "about-4": "url(images/about-4.jpg)",
       },
       animation: {
         "spin-slow": "spin 30s linear infinite",
@@ -22,11 +26,8 @@ module.exports = {
       boxShadow: {
         standart: "0 0 40px rgba(0, 0, 0, 0.3)",
       },
-      keyframes: {
-        slide: {
-          "0%": { transform: "translateY(1000px)", opacity: 0 },
-          "100%": { transform: "translateY(0)", opacity: 1 },
-        },
+      fontFamily: {
+        dancing: "Dancing Script",
       },
     },
   },
