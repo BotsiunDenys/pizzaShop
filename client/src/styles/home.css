@@ -1,5 +1,5 @@
 .card {
-  @apply hover:text-white rounded-md shadow-standart w-[300px] h-[240px] p-[24px] transition-colors hover:bg-main animate-slide-in;
+  @apply hover:text-white rounded-md shadow-standart w-[300px] h-[240px] p-[24px] transition-colors hover:bg-main;
 }
 .cardHeader {
   @apply text-2xl font-bold mt-3 mb-6;
