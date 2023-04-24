@@ -13,7 +13,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-blue text-white mt-8">
+    <footer className="bg-blue text-white mt-20">
       <div className="flex sm:flex-row flex-col sm:items-center items-start sm:ml-0 ml-10 justify-around py-5">
         <section>
           <h3 className="text-2xl text-main font-dancing">Contact Us</h3>

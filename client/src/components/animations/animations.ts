@@ -44,4 +44,4 @@ export const imageAnimation = {
     opacity: 1,
     transition: { delay: custom * 0.2, duration: 0.4 },
   }),
-}
+};

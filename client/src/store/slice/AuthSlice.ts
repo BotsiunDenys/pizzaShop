@@ -35,7 +35,10 @@ export const login = createAsyncThunk<AuthResponse, AuthDetails>(
 export const registration = createAsyncThunk<AuthResponse, AuthDetails>(
   "auth/registration",
   async (username, password) => {
-    const response = await api.post("/auth/registration", { username, password });
+    const response = await api.post("/auth/registration", {
+      username,
+      password,
+    });
     localStorage.setItem("token", response.data.accessToken);
     return response.data;
   }
@@ -83,8 +86,6 @@ const AuthSlice = createSlice({
       state.isLogged = false;
       state.user = null;
       if (action.error.message) {
-        console.log(action);
-        
         state.error = action.error.message;
       }
     });

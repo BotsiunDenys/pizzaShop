@@ -2,10 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import PizzaRouter from "./Routers/PizzaRouter.js";
-import DesertRouter from "./Routers/DesertRouter.js";
-import BeverageRouter from "./Routers/BeverageRouter.js";
-import BurgerRouter from "./Routers/BurgerRouter.js";
+import ProductRouter from "./Routers/ProductRouter.js";
 import AuthRouter from "./Routers/AuthRouter.js";
 import ErrorMiddleware from "./middlewares/ErrorMiddleware.js";
 import * as dotenv from "dotenv";
@@ -25,10 +22,7 @@ app.use(
   })
 );
 app.use("/auth", AuthRouter);
-app.use("/apiPizza", PizzaRouter);
-app.use("/apiDrink", DesertRouter);
-app.use("/apiBeverage", BeverageRouter);
-app.use("/apiBurger", BurgerRouter);
+app.use("/apiProduct", ProductRouter);
 app.use(ErrorMiddleware);
 
 async function startApp() {
