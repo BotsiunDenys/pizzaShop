@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { animate, useInView } from "framer-motion";
+import { animate } from "framer-motion";
 
 interface Props {
   from: number;
@@ -8,11 +8,9 @@ interface Props {
 
 const Counter = ({ from, to }: Props) => {
   const elRef = useRef<HTMLParagraphElement>(null);
-  const isInView = useInView(elRef);
 
   useEffect(() => {
     const el = elRef.current;
-    
     const controls = animate(from, to, {
       duration: 2,
       onUpdate(value) {
@@ -23,7 +21,7 @@ const Counter = ({ from, to }: Props) => {
     });
 
     return () => controls.stop();
-  }, [from, to, isInView]);
+  }, [from, to]);
 
   return (
     <p

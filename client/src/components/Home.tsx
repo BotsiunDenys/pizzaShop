@@ -6,6 +6,7 @@ import { RiCustomerService2Line } from "react-icons/ri";
 import { textAnimation, blockAnimation } from "./animations/animations";
 import "../styles/home.css";
 import About from "./About";
+import Menu from "./Menu";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -89,6 +90,7 @@ const Home = () => {
         </div>
       </motion.div>
       <About />
+      <Menu />
     </>
   );
 };

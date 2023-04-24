@@ -22,12 +22,19 @@ module.exports = {
       animation: {
         "spin-slow": "spin 30s linear infinite",
         "slide-in": "slide 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
+        "fade-in": "fade 0.7s linear",
       },
       boxShadow: {
         standart: "0 0 40px rgba(0, 0, 0, 0.3)",
       },
       fontFamily: {
         dancing: "Dancing Script",
+      },
+      keyframes: {
+        fade: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
       },
     },
   },

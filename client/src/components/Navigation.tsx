@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import { Outlet, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Outlet, Link, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../store/store";
+import { logout, checkAuth } from "../store/slice/AuthSlice";
 import { FaPizzaSlice } from "react-icons/fa";
 import {
   AiOutlineMenu,
@@ -13,7 +15,17 @@ import "../styles/nav.css";
 import Footer from "./Footer";
 
 const Navigation = () => {
+  const isLogged = useAppSelector((state) => state.auth.isLogged);
+  const roles = useAppSelector((state) => state.auth.user?.roles);
+  const isAdmin = roles?.find((role) => role === "admin");
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [openNav, setOpenNav] = useState(false);
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      dispatch(checkAuth());
+    }
+  }, []);
   return (
     <>
       <nav className="bg-blue text-white h-20 md:flex justify-between relative items-center">
@@ -51,14 +63,35 @@ const Navigation = () => {
               About
             </Link>
           </li>
+          {isAdmin && (
+            <li className="li">
+              <Link to="/adminpanel" className="link">
+                Admin&nbsp;panel
+              </Link>
+            </li>
+          )}
           <li className="li">
-            <Link
-              className="text-white md:bg-main md:px-3 md:py-2 md:rounded-md md:hover:bg-hoverMain md:hover:text-white md:focus:text-white transition-colors link"
-              to="/login"
-            >
-              <BiLogIn className={`icon`} />
-              Sign&nbsp;up
-            </Link>
+            {!isLogged && (
+              <Link
+                className="text-white md:bg-main md:px-3 md:py-2 md:rounded-md md:hover:bg-hoverMain md:hover:text-white md:focus:text-white transition-colors link"
+                to="/login"
+              >
+                <BiLogIn className={`icon`} />
+                Sign&nbsp;in
+              </Link>
+            )}
+            {isLogged && (
+              <button
+                className="text-white md:bg-main md:px-3 md:py-2 md:rounded-md md:hover:bg-hoverMain md:hover:text-white md:focus:text-white transition-colors link"
+                type="button"
+                onClick={() => {
+                  dispatch(logout());
+                  navigate("/");
+                }}
+              >
+                Logout
+              </button>
+            )}
           </li>
         </ul>
       </nav>
