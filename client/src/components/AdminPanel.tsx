@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import { useAppSelector } from "../store/store";
+import { useNavigate } from "react-router-dom";
 
 const AdminPanel = () => {
-  return (
-    <div>AdminPanel</div>
-  )
-}
+  const isLogged = useAppSelector((state) => state.auth.isLogged);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!isLogged) navigate("/");
+  }, [isLogged]);
+  return <div>AdminPanel</div>;
+};
 
-export default AdminPanel
+export default AdminPanel;

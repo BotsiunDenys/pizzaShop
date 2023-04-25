@@ -6,6 +6,7 @@ import Menu from "./components/Menu";
 import About from "./components/About";
 import Login from "./components/Login";
 import AdminPanel from "./components/AdminPanel";
+import OrderPage from "./components/OrderPage";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/adminpanel" element={<AdminPanel />} />
+          <Route path="/order" element={<OrderPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

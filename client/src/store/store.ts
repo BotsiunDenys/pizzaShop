@@ -4,11 +4,13 @@ import { useSelector } from "react-redux/es/exports";
 import { TypedUseSelectorHook } from "react-redux/es/types";
 import AuthSlice from "./slice/AuthSlice";
 import MenuSlice from "./slice/MenuSlice";
+import OrderSlice from "./slice/OrderSlice";
 
 const reducer = {
   auth: AuthSlice,
-  menu: MenuSlice
-}
+  menu: MenuSlice,
+  order: OrderSlice,
+};
 
 const store = configureStore({
   reducer: reducer,

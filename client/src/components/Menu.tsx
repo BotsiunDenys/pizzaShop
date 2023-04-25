@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { FaHamburger, FaPizzaSlice, FaCoffee } from "react-icons/fa";
 import { GiCupcake } from "react-icons/gi";
 import { CgMenuCake } from "react-icons/cg";
@@ -6,12 +7,16 @@ import { motion } from "framer-motion";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { Product } from "../models/MenuModels";
 import { getProducts } from "../store/slice/MenuSlice";
+import { addProduct } from "../store/slice/OrderSlice";
 import { blockAnimation } from "./animations/animations";
+import "react-toastify/dist/ReactToastify.css";
 
 const Menu = () => {
   const dispatch = useAppDispatch();
   const [menu, setMenu] = useState<Product[] | []>([]);
   const products = useAppSelector((state) => state.menu.products);
+  const isLogged = useAppSelector((state) => state.auth.isLogged);
+  const order = useAppSelector((state) => state.order.products);
   const burgers = useMemo(
     () => products.filter((product) => product.category === "burger"),
     [products]
@@ -35,6 +40,11 @@ const Menu = () => {
   useEffect(() => {
     setMenu(beverages);
   }, [beverages]);
+
+  const toastWarning = () => {
+    toast("Login to make an order");
+  };
+
   return (
     <motion.div
       initial="hidden"
@@ -104,7 +114,23 @@ const Menu = () => {
                   {item.name}
                 </header>
                 <p className="font-bold">Price: {item.price}$</p>
-                <button className="sm:px-3 px-1 sm:py-2 py-1 bg-main rounded-sm text-white hover:bg-hoverMain max-w-fit transition-colors">
+                <button
+                  onClick={() => {
+                    if (isLogged) {
+                      const isOrdered = order.find(
+                        (product) => product.id === item.id
+                      );
+                      console.log(isOrdered);
+
+                      if (!isOrdered) {
+                        dispatch(addProduct(item));
+                      }
+                    } else {
+                      toastWarning();
+                    }
+                  }}
+                  className="sm:px-3 px-1 sm:py-2 py-1 bg-main rounded-sm text-white hover:bg-hoverMain max-w-fit transition-colors"
+                >
                   Add to order
                 </button>
               </div>
@@ -113,6 +139,7 @@ const Menu = () => {
           </div>
         ))}
       </main>
+      <ToastContainer />
     </motion.div>
   );
 };

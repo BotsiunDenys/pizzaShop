@@ -36,8 +36,7 @@ module.exports = [
           },
         },
         {
-          test: /\.(css|module.css)$/,
-          exclude: /node_modules/,
+          test: /\.css$/,
           use: ["style-loader", "css-loader", "postcss-loader"],
         },
         { test: /\.(png|svg|jpg|jpeg)$/i, type: "asset/resource" },
