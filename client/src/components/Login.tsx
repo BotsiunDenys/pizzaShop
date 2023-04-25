@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import { login, registration } from "../store/slice/AuthSlice";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import loginFormSchema from "./form/formValidationSchema";
 import CustomInput from "./form/CustomInput";
+import "react-toastify/dist/ReactToastify.css";
 
 interface LoginFormValues {
   username: string;
@@ -15,10 +17,25 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isAuthFailed = useAppSelector((state) => state.auth.error);
+  const isLogged = useAppSelector((state) => state.auth.isLogged);
   const [isRegForm, setIsRegForm] = useState(false);
   const initialValues: LoginFormValues = {
     username: "",
     password: "",
+  };
+  useEffect(() => {
+    if (isLogged) {
+      navigate("/");
+    } else {
+      if (isAuthFailed && !isRegForm) {
+        toastLogin("Wrong username or password");
+      } else if (isAuthFailed && isRegForm) {
+        toastLogin("User with this username already exists");
+      }
+    }
+  }, [isAuthFailed, isLogged]);
+  const toastLogin = (message: string) => {
+    toast(message);
   };
   return (
     <div className="min-h-[60vh] flex justify-center items-center pt-10">
@@ -26,22 +43,13 @@ const Login = () => {
         <header className="text-blue text-3xl text-center mb-3">
           {isRegForm ? "Registration" : "Sign in"}
         </header>
-        {isAuthFailed && (
-          <h2 className="text-xl text-red-600 text-center mb-5">
-            Invalid username or password
-          </h2>
-        )}
         <Formik
           initialValues={initialValues}
           onSubmit={(values, actions) => {
             if (isRegForm) {
               dispatch(registration(values));
-              navigate("/");
             } else {
               dispatch(login(values));
-              if (!isAuthFailed) {
-                navigate("/");
-              }
             }
             actions.resetForm();
           }}
@@ -83,6 +91,7 @@ const Login = () => {
           </Form>
         </Formik>
       </div>
+      <ToastContainer />
     </div>
   );
 };
