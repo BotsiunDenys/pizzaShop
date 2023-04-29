@@ -118,7 +118,7 @@ const Menu = () => {
                   onClick={() => {
                     if (isLogged) {
                       const isOrdered = order.find(
-                        (product) => product.id === item.id
+                        (product) => product._id === item._id
                       );
                       console.log(isOrdered);
 
