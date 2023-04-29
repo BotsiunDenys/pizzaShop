@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { TbToolsKitchen, TbChefHat, TbShoppingCart } from "react-icons/tb";
 import { RiCustomerService2Line } from "react-icons/ri";
 import { textAnimation, blockAnimation } from "./animations/animations";
-import "../styles/home.css";
 import About from "./About";
 import Menu from "./Menu";
+import "../styles/home.css";
 
 const Home = () => {
   const navigate = useNavigate();

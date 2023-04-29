@@ -7,6 +7,7 @@ module.exports = {
         blue: "#0F172B",
         hoverMain: "#fdac33",
         opBlue: "rgba(15, 23, 43, 0.8)",
+        opBlack: "rgba(0, 0, 0, 0.4)",
       },
       transitionDuration: {
         DEFAULT: "300ms",
