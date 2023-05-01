@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { clearProducts } from "../store/slice/OrderSlice";
 import { Formik, Form } from "formik";
 import { AiOutlineClose } from "react-icons/ai";
-import SingleOrderProduct from "./SingleOrderProduct";
-import Modal from "./Modal";
-import CustomInput from "./form/CustomInput";
-import orderFormSchema from "./form/orderValidationSchema";
+import SingleOrderProduct from "../components/SingleOrderProduct";
+import Modal from "../components/Modal";
+import CustomInput from "../components/form/CustomInput";
+import orderFormSchema from "../components/form/orderValidationSchema";
+import { blockAnimation } from "../components/animations/animations";
 import "react-toastify/dist/ReactToastify.css";
 
 interface OrderFormValues {
@@ -34,9 +36,17 @@ const OrderPage = () => {
   const toastOrder = (message: string) => {
     toast(message);
   };
+
   return (
     <>
-      <main className="flex flex-col justify-center items-center mt-10 min-h-[60vh]">
+      <motion.main
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={blockAnimation}
+        custom={1}
+        className="flex flex-col justify-center items-center mt-10 min-h-[60vh]"
+      >
         <header className="text-3xl text-main font-dancing font-bold">
           Your order
         </header>
@@ -69,7 +79,7 @@ const OrderPage = () => {
             </button>
           </div>
         </footer>
-      </main>
+      </motion.main>
       <Modal visible={modalForm} setVisible={setModalForm}>
         <div>
           <header className="flex justify-between text-2xl  text-main items-center">
@@ -83,6 +93,7 @@ const OrderPage = () => {
             initialValues={initialValues}
             onSubmit={(values, actions) => {
               console.log(values);
+              dispatch(clearProducts());
               toastOrder("Order proceed!");
               actions.resetForm();
               setModalForm(false);

@@ -1,7 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Counter from "./Counter";
-import { aboutAnimation, imageAnimation } from "./animations/animations";
+import Counter from "../components/Counter";
+import {
+  aboutAnimation,
+  imageAnimation,
+} from "../components/animations/animations";
 
 const About = () => {
   return (

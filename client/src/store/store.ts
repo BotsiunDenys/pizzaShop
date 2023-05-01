@@ -16,6 +16,7 @@ import storage from "redux-persist/lib/storage";
 import AuthSlice from "./slice/AuthSlice";
 import MenuSlice from "./slice/MenuSlice";
 import OrderSlice from "./slice/OrderSlice";
+import AdminSlice from "./slice/AdminSlice";
 
 const persistConfig = {
   key: "root",
@@ -28,6 +29,7 @@ const reducer = {
   auth: AuthSlice,
   menu: MenuSlice,
   order: persistedOrderReducer,
+  admin: AdminSlice,
 };
 
 const store = configureStore({

@@ -11,7 +11,6 @@ interface Props {
 
 const CustomInput = ({ label, className, ...props }: Props) => {
   const [field, meta] = useField(props);
-
   return (
     <div className={className}>
       <label htmlFor={props.name}>{label}</label>
@@ -24,7 +23,9 @@ const CustomInput = ({ label, className, ...props }: Props) => {
             : "px-4 py-2 text-xl rounded-md outline-none transition-all"
         }
       />
-      {meta.touched && meta.error && <div className="text-sm text-red-600">{meta.error}</div>}
+      {meta.touched && meta.error && (
+        <div className="text-sm text-red-600">{meta.error}</div>
+      )}
     </div>
   );
 };
