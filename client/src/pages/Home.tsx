@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { TbToolsKitchen, TbChefHat, TbShoppingCart } from "react-icons/tb";
 import { RiCustomerService2Line } from "react-icons/ri";
-import { textAnimation, blockAnimation } from "./animations/animations";
+import {
+  textAnimation,
+  blockAnimation,
+} from "../components/animations/animations";
 import About from "./About";
 import Menu from "./Menu";
 import "../styles/home.css";

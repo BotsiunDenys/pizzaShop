@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import ReactLoading from "react-loading";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import { login, registration } from "../store/slice/AuthSlice";
 import { useAppDispatch, useAppSelector } from "../store/store";
-import loginFormSchema from "./form/formValidationSchema";
-import CustomInput from "./form/CustomInput";
+import loginFormSchema from "../components/form/formValidationSchema";
+import CustomInput from "../components/form/CustomInput";
 import "react-toastify/dist/ReactToastify.css";
 
 interface LoginFormValues {
@@ -18,6 +19,7 @@ const Login = () => {
   const navigate = useNavigate();
   const isAuthFailed = useAppSelector((state) => state.auth.error);
   const isLogged = useAppSelector((state) => state.auth.isLogged);
+  const loading = useAppSelector((state) => state.auth.loading);
   const [isRegForm, setIsRegForm] = useState(false);
   const initialValues: LoginFormValues = {
     username: "",
@@ -37,6 +39,14 @@ const Login = () => {
   const toastLogin = (message: string) => {
     toast(message);
   };
+
+  if (loading)
+    return (
+      <div className="flex items-center justify-center mt-52">
+        <ReactLoading type="bars" color="#616469" />
+      </div>
+    );
+
   return (
     <div className="min-h-[60vh] flex justify-center items-center pt-10">
       <div className=" bg-slate-300 py-10 px-14 rounded-md">

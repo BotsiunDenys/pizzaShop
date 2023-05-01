@@ -10,7 +10,7 @@ import {
   AiOutlineHome,
   AiOutlineSearch,
   AiOutlineLogout,
-  AiOutlineShoppingCart
+  AiOutlineShoppingCart,
 } from "react-icons/ai";
 import { MdOutlineFastfood } from "react-icons/md";
 import { BiLogIn } from "react-icons/bi";
@@ -33,7 +33,10 @@ const Navigation = () => {
     <>
       <nav className="bg-blue text-white h-20 md:flex justify-between relative items-center">
         <div className="after:absolute after:bg-blue after:h-full after:w-full after:z-20 md:hidden" />
-        <header className="text-main font-bold flex items-center md:text-3xl text-2xl pl-10 md:py-0 py-5 md:z-auto z-20">
+        <header
+          onClick={() => navigate("/")}
+          className="text-main font-bold flex items-center md:text-3xl text-2xl pl-10 md:py-0 py-5 md:z-auto z-20 cursor-pointer"
+        >
           <FaPizzaSlice className="mr-[10px] md:z-auto z-20 bg-blue" />
           <p className="md:z-auto z-20 bg-blue">Cho-cho pizza</p>
         </header>

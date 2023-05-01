@@ -1,0 +1,7 @@
+.adminLi {
+  @apply flex items-center gap-2 md:text-2xl text-base text-main hover:text-hoverMain transition-colors leading-10 cursor-pointer border-b-2 hover:border-main;
+}
+
+.adminInput {
+  @apply flex flex-col gap-1 text-xl text-blue;
+}
