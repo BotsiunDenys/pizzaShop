@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API_URL = "http://localhost:5000";
+export const API_URL = "https://pizza-project-api.onrender.com";
 
 const api = axios.create({
   withCredentials: true,
