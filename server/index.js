@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:8080",
+    origin: "https://pizza-shop-sage.vercel.app/",
   })
 );
 app.use("/auth", AuthRouter);
