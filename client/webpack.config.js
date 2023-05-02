@@ -1,11 +1,11 @@
 const path = require("path");
 const htmlWebpackPlugin = require("html-webpack-plugin");
-const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = [
   {
     entry: "./src/index.tsx",
-    mode: "production",
+    mode: "development",
     output: {
       path: path.resolve(__dirname, "dist"),
       filename: "bundle.js",
@@ -14,7 +14,7 @@ module.exports = [
       new htmlWebpackPlugin({
         template: "./src/index.html",
       }),
-      new FaviconsWebpackPlugin("./src/images/favicon.ico"),
+      new FaviconsWebpackPlugin('./src/images/favicon.ico')
     ],
     resolve: {
       extensions: [".js", ".ts", ".jsx", ".tsx"],
@@ -53,7 +53,7 @@ module.exports = [
           test: /\.css$/,
           use: ["style-loader", "css-loader", "postcss-loader"],
         },
-        { test: /\.(png|svg|jpg|jpeg|ico)$/i, type: "asset/resource" },
+        { test: /\.(png|svg|jpg|jpeg)$/i, type: "asset/resource" },
       ],
     },
     devServer: {
