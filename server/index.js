@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: "https://pizza-shop-sage.vercel.app/",
+    origin: "https://pizza-shop-sage.vercel.app",
   })
 );
 app.use("/auth", AuthRouter);
