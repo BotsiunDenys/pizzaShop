@@ -8,6 +8,8 @@ class AuthController {
       res.cookie("refreshToken", userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
+        sameSite: "none",
+        secure: true,
       });
       return res.json(userData);
     } catch (e) {
@@ -21,6 +23,8 @@ class AuthController {
       res.cookie("refreshToken", userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
+        sameSite: "none",
+        secure: true,
       });
       return res.json(userData);
     } catch (e) {
@@ -45,6 +49,7 @@ class AuthController {
       const token = await AuthService.refresh(refreshToken);
       res.cookie("refreshToken", token.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
         sameSite: "none",
         secure: true,
       });
