@@ -18,7 +18,10 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: "https://pizza-shop-tau-smoky.vercel.app",
+    origin: [
+      "https://pizza-shop-tau-smoky.vercel.app",
+      "https://cho-cho-pizza-delivery.web.app",
+    ],
   })
 );
 app.use("/auth", AuthRouter);
