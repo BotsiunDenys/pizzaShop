@@ -48,6 +48,7 @@ class AuthController {
         httpOnly: true,
         secure: true,
         domain: ".onrender.com",
+        sameSite: "None",
       });
       return res.json(token);
     } catch (e) {
