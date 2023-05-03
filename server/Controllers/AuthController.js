@@ -47,8 +47,7 @@ class AuthController {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
         secure: true,
-        domain: ".onrender.com",
-        sameSite: "None",
+        sameSite: "none",
       });
       return res.json(token);
     } catch (e) {
